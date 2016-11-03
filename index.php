@@ -3,11 +3,11 @@
 <script type="text/javascript">
 function shutdown() {
     $.get("shutdown.php");
-    $("#shutdown h1").show();
+    $("#shutdown h2").show();
 }
 function reboot() {
     $.get("reboot.php");
-    $("#reboot h1").show();
+    $("#reboot h2").show();
   setTimeout(location.reload.bind(location), 120000);
 }
 function transmission() {
@@ -44,21 +44,24 @@ else
     </header>
 
     <article id="shutdown" onclick="shutdown()" >
-      <h1 style="display:none;" >Shutting Down! </h1>
+    <h1>POWEROFF</h!>
+      <h2 style="display:none;" >Shutting Down! </h1>
     </article>
 
      <article id="reboot" onclick="reboot()" >
-      <h1 style="display:none;" >Rebooting Now! </h1>
+     <h1>REBOOT</H1>
+      <h2 style="display:none;" >Rebooting Now! </h1>
     </article>
 
     <footer role="contentinfo" id="footer" onclick="transmission()">
 
-      <H1><?php exec("ps aux | grep -i 'transmission-daemon' | grep -v grep", $pids);
+      <?php exec("ps aux | grep -i 'transmission-daemon' | grep -v grep", $pids);
 if(empty($pids)) {
-        print '<h1><span id="tr_no_r" >not running!</span><span id="tr_r" style="display:none;" >running OK!</span></h1>';
+        print '<h1><span id="tr_no_r" >not running!</span><span id="tr_r" style="display:none;" >running OK!</span></h1><h2>START SERVICE </H2>';
 } else {
-        print '<h1><span id="tr_no_r" style="display:none;" >not running!</span><span id="tr_r" >running OK! </span><h1>';
+        print '<h1><span id="tr_no_r" style="display:none;" >not running!</span><span id="tr_r" >running OK! </span><h1><h2>STOP SERVICE</H2>';
 }; ?>
+
 
     </footer>
 
